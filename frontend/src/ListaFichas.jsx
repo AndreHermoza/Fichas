@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getFicha, deleteFicha } from "./services/api"; 
 
 function ListaFichas({ tipo, actualizar }) {
   const [fichas, setFichas] = useState([]);
   const [mensaje, setMensaje] = useState("");
   const [busqueda, setBusqueda] = useState("");
-  var url = "/FICHAS";
+
   useEffect(() => {
     cargarFichas();
   }, [actualizar, tipo]);
 
   const cargarFichas = async () => {
     try {
-      const res = await axios.get(url);
+      const res = await getFicha();
       const filtradas = res.data.filter(f => f.tipo === tipo);
       setFichas(filtradas);
       setMensaje("");
@@ -34,7 +34,7 @@ function ListaFichas({ tipo, actualizar }) {
 
   const eliminarFicha = async (id) => {
     try {
-      await axios.delete(url + `/${id}`);
+      await deleteFicha(id);
       setMensaje("🗑️ Ficha eliminada.");
       setTimeout(() => setMensaje(""), 3000);
       cargarFichas();

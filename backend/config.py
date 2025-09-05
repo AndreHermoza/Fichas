@@ -7,8 +7,8 @@ load_dotenv()
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 # Configuración de conexión
-DB_USER = os.getenv("DB_USER", "JUANA")
-DB_PASS = os.getenv("DB_PASS", "Admin12345")
+DB_USER = os.getenv("DB_USER", "system")
+DB_PASS = os.getenv("DB_PASS", "Andre1")
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = os.getenv("DB_PORT", "1521")
 DB_SERVICE = os.getenv("DB_SERVICE", "XEPDB1")
